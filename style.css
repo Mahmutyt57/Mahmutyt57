@@ -1,0 +1,345 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+header {
+  background-color: #d36b09;
+  padding: 25px;
+}
+
+.başlık {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 230px;
+}
+
+.arama_cubugu {
+  width: 650px;
+  height: 50px;
+  border-radius: 25px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 0 25px;
+  font-size: 16px;
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.95);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  margin-left: 180px;
+}
+
+.arama_cubugu:focus {
+  outline: none;
+  border-color: #fff;
+  background-color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.arama_cubugu::placeholder {
+  color: #888;
+  font-weight: 300;
+}
+
+.arama_cubugu:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+}
+
+.sepet_icon i {
+  font-size: 24px;
+  margin-left: 210px;
+}
+
+/* Ana navigasyon */
+.kategoriler {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  background-color: white;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.kategoriler > div {
+  display: inline-block;
+  margin: 5px;
+  padding: 0;
+  background-color: #eee;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  position: relative;
+  text-align: center;
+  min-width: 140px;
+  min-height: 120px;
+  transition: 0.3s;
+  background-size: cover;
+  background-position: center;
+  /* overflow: hidden; */
+}
+
+.kategoriler > div:hover {
+  border-color: #d36b09;
+}
+
+.kategoriler a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.kategoriler a:hover {
+  color: white;
+}
+
+/* ALT KATEGORİLER */
+.alt-kategoriler {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 140px;
+  padding-top: 10px;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.kategoriler div:hover .alt-kategoriler {
+  display: block;
+}
+
+.alt-kategoriler div {
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 140px;
+  height: 120px;
+  margin-bottom: 10px;
+  transition: 0.3s;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid transparent;
+}
+
+.alt-kategoriler div:hover {
+  border-color: #d36b09;
+}
+
+.alt-kategoriler a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.alt-kategoriler a:hover {
+  color: white;
+}
+
+/* Ürün kartları */
+.card {
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  border-color: #d36b09;
+  outline: solid 2px #d36b09;
+  transition: 0.3s;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.btn-warning {
+  background-color: #d36b09;
+  border-color: #d36b09;
+  color: white;
+}
+
+.btn-warning:hover {
+  background-color: #b85c08;
+  border-color: #b85c08;
+}
+
+/* Sepet */
+.sepet_icon {
+  position: relative;
+  cursor: pointer;
+}
+
+.sepet_icon:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+#sepetModal {
+  display: none;
+  position: fixed;
+  top: 20%;
+  right: 10%;
+  width: 300px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
+}
+
+#sepetModal.open {
+  display: block;
+}
+
+#sepetModal .close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal-urun {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-urun img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.modal-urun .urun-info {
+  flex-grow: 1;
+  margin-left: 10px;
+}
+
+#reklam-yazi {
+  text-align: center;
+  color: #d36b09;
+  font-size: 50px;
+}
+
+#reklam-buyukluk {
+  width: 1000px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#sepetUrunler {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 10px;
+  background-color: #f9f9f9;
+}
+
+#sepetUrunler::-webkit-scrollbar {
+  width: 6px;
+}
+
+#sepetUrunler::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+#sepetUrunler::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  border-radius: 10px;
+}
+
+/* Login */
+#loginContainer {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fffdd0;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  background-color: #d36b09;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px black;
+}
+
+.login-form h2 {
+  color: black;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.login-form .form-control:focus {
+  border-color: black;
+  box-shadow: 0 0 0 0 black;
+}
+
+.login-form .btn-warning {
+  width: 100%;
+  margin-top: 1rem;
+  background-color: black;
+  color: white;
+}
+
+.login-form .btn-warning:hover {
+  background-color: #282A2b;
+}
+
+#loginError {
+  color: #dc3545;
+  font-size: 17px;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.login-logo {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.login-logo img {
+  max-width: 200px;
+}
+
+.hide {
+  display: none !important;
+}
+
+#mainContent {
+  display: none;
+}
